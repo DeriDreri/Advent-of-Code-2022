@@ -25,6 +25,8 @@ public class Day1 {
 				current = 0;
 			}
 		}
+
+		text.close();
 		System.out.println(max);
 	}
 
