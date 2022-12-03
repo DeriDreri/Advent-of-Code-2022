@@ -14,11 +14,30 @@ public class Part2 {
 		int points = 0;
 		while (text.hasNextLine()) {
 			String read;
-			char player, opponent;
+			char playerChoice, opponentFigure;
+			int playerFigure = 0;
 
 			read = text.nextLine();
-			opponent = read.charAt(0);
-			player = read.charAt(2);
+			opponentFigure = read.charAt(0);
+			playerChoice = read.charAt(2);
+			
+			switch(playerChoice){
+				case 'X':
+					playerFigure = opponentFigure + 2;
+					break;
+				
+				case 'Y':
+					playerFigure = opponentFigure;
+					points += 3;
+					break;
+					
+				case 'Z':
+					playerFigure = opponentFigure +1;
+					points += 6;
+					break;
+			}
+			if (playerFigure > 67) playerFigure -= 3;
+			points += playerFigure - 64;
 			
 		}
 		System.out.println(points);
