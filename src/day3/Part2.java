@@ -14,9 +14,23 @@ public class Part2 {
 		while (text.hasNextLine()) {
 			for (int i = 0; i < 3; i++)
 				rucksacks[i] = text.nextLine();
+			System.out.println(findCommonIn3(rucksacks[0], rucksacks[1], rucksacks[2]));
+		}
+		text.close();
+	}
+
+	public static char findCommonIn3(String first, String second, String third) {
+		for (char i : first.toCharArray()) {
+			String check = Character.toString(i);
+
+			if (second.contains(check))
+				if (third.contains(check)) {
+					return i;
+				}
 
 		}
 
+		return ' ';
 	}
 
 }
