@@ -18,16 +18,13 @@ public class Day1 {
 		while (text.hasNextLine()) {
 			read = text.nextLine();
 
-			if (read != "")
-				current = +Integer.parseInt(read);
+			if (read != "") current += Integer.parseInt(read);
 
 			else {
-				if (current > max)
-					max = current;
+				if (current > max) max = current;
 				current = 0;
 			}
 		}
-
 		System.out.println(max);
 	}
 
