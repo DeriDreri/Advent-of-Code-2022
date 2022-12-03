@@ -10,13 +10,15 @@ public class Part2 {
 		File file = new File("inputs\\rucksack.txt");
 		Scanner text = new Scanner(file);
 		String rucksacks[] = new String[3];
+		int sum = 0;
 
 		while (text.hasNextLine()) {
 			for (int i = 0; i < 3; i++)
 				rucksacks[i] = text.nextLine();
-			System.out.println(findCommonIn3(rucksacks[0], rucksacks[1], rucksacks[2]));
+			sum += Part1.calculatePriority(findCommonIn3(rucksacks[0],rucksacks[1],rucksacks[2]));
 		}
 		text.close();
+		System.out.println(sum);
 	}
 
 	public static char findCommonIn3(String first, String second, String third) {
