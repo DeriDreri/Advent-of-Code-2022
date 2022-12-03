@@ -8,7 +8,7 @@ public class Day1 {
 
 	public static void main(String args[]) throws FileNotFoundException {
 
-		int max = 0;
+		int[] max = {0, 0, 0};
 		int current = 0;
 		String read;
 
@@ -21,13 +21,33 @@ public class Day1 {
 			if (read != "") current += Integer.parseInt(read);
 
 			else {
-				if (current > max) max = current;
+				if (current <= max[2]) {
+					current = 0;
+					continue;
+				}
+				if (current <= max[1]) {
+					max[2] = current;
+					current = 0;
+					continue;
+				}
+				if (current <= max[0]) {
+					max[2] = max[1];
+					max[1] = current;
+					current = 0;
+					continue;
+				}
+				max[2] = max[1];
+				max[1] = max[0];
+				max[0] = current;
 				current = 0;
+				
 			}
+			
 		}
 
 		text.close();
-		System.out.println(max);
+		System.out.println(max[0] + " " + max[1] + " " + max[2]);
+		System.out.println(max[0] + max[1] + max[2]);
 	}
 
 }
