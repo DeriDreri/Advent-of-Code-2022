@@ -10,12 +10,14 @@ public class Part1 {
 		File file = new File("inputs\\rucksack.txt");
 		Scanner text = new Scanner(file);
 		String read;
+		int sum = 0;
 
 		while (text.hasNextLine()) {
 			read = text.nextLine();
 			char common = findCommon(read);
-			System.out.println(read + " : " + common + ": " + calculatePriority(common));
+			sum += calculatePriority(common);
 		}
+		System.out.println(sum);
 		text.close();
 	}
 
