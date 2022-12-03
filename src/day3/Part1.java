@@ -14,12 +14,22 @@ public class Part1 {
 		while (text.hasNextLine()) {
 			read = text.nextLine();
 			char common = findCommon(read);
-			System.out.println(read + " : " + common);
+			System.out.println(read + " : " + common + ": " + calculatePriority(common));
 		}
 		text.close();
 	}
-	
-	
+
+	public static int calculatePriority(char item) {
+		int priority = 0;
+
+		if (item > 95) {
+			priority = item - 96;
+		} else {
+			priority = item - 38;
+		}
+		return priority;
+	}
+
 	public static char findCommon(String rucksack) {
 		int middle = rucksack.length() / 2;
 		char common = ' ';
