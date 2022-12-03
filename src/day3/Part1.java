@@ -14,7 +14,7 @@ public class Part1 {
 
 		while (text.hasNextLine()) {
 			read = text.nextLine();
-			char common = findCommon(read);
+			char common = findCommonInHalfs(read);
 			sum += calculatePriority(common);
 		}
 		System.out.println(sum);
@@ -32,19 +32,18 @@ public class Part1 {
 		return priority;
 	}
 
-	public static char findCommon(String rucksack) {
+	public static char findCommonInHalfs(String rucksack) {
 		int middle = rucksack.length() / 2;
-		char common = ' ';
 		String[] rucksackParts = { rucksack.substring(0, middle), rucksack.substring(middle) };
 
 		for (char i : rucksackParts[0].toCharArray()) {
 			String check = Character.toString(i);
 			if (rucksackParts[1].contains(check)) {
-				common = i;
-				break;
+				return  i;
+
 			}
 
 		}
-		return common;
+		return ' ';
 	}
 }
