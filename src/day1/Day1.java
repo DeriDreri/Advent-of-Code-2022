@@ -12,7 +12,7 @@ public class Day1 {
 		int current = 0;
 		String read;
 
-		File file = new File("calories.txt");
+		File file = new File("inputs\\calories.txt");
 		Scanner text = new Scanner(file);
 
 		while (text.hasNextLine()) {
