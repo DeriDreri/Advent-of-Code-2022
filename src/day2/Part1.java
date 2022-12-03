@@ -9,9 +9,9 @@ public class Part1 {
 	public static void main(String args[]) throws FileNotFoundException {
 		File file = new File("rock-paper-scissors.txt");
 		Scanner text = new Scanner(file);
-		
+
 		int points = 0;
-		
+
 		while (text.hasNextLine()) {
 			String read;
 			char player, opponent;
@@ -19,9 +19,9 @@ public class Part1 {
 			read = text.nextLine();
 			opponent = read.charAt(0);
 			player = read.charAt(2);
-			
+
 			points += player - 87;
-			
+
 			switch (player - opponent) {
 			case 23:
 				points += 3;
