@@ -7,23 +7,25 @@ import java.util.Scanner;
 public class Part1 {
 
 	public static void main(String args[]) throws FileNotFoundException {
-		
+
 		File file = new File("inputs\\cleaning.txt");
 		Scanner text = new Scanner(file);
-		
-		
-		while(text.hasNextLine()) {
+		int sum = 0;
+
+		while (text.hasNextLine()) {
 			String read = text.nextLine();
-			
+
 			String[] elves = read.split(",");
 			String[] first = elves[0].split("-");
 			String[] second = elves[1].split("-");
-			
-			System.out.println(first[0] + "-" + first[1] + "," + second[0] + "-" + second[1]);
-			
+			int[][] values = { { Integer.parseInt(first[0]), Integer.parseInt(first[1]) },
+					{ Integer.parseInt(second[0]), Integer.parseInt(second[1]) } };
+			if (values[0][0] >= values[1][0] && values[0][1] <= values[1][1]) sum++;
+			else if (values[1][0] >= values[0][0] && values[1][1] <= values[0][1]) sum++;
 		}
-		
+
+		System.out.println(sum);
 		text.close();
 	}
-	
+
 }
