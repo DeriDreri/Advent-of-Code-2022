@@ -15,7 +15,7 @@ public class Part2 {
 		while (text.hasNextLine()) {
 			for (int i = 0; i < 3; i++)
 				rucksacks[i] = text.nextLine();
-			sum += Part1.calculatePriority(findCommonIn3(rucksacks[0],rucksacks[1],rucksacks[2]));
+			sum += Part1.calculatePriority(findCommonIn3(rucksacks[0], rucksacks[1], rucksacks[2]));
 		}
 		text.close();
 		System.out.println(sum);
