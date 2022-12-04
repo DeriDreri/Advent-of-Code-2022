@@ -15,7 +15,11 @@ public class Part1 {
 		while(text.hasNextLine()) {
 			String read = text.nextLine();
 			
+			String[] elves = read.split(",");
+			String[] first = elves[0].split("-");
+			String[] second = elves[1].split("-");
 			
+			System.out.println(first[0] + "-" + first[1] + "," + second[0] + "-" + second[1]);
 			
 		}
 		
