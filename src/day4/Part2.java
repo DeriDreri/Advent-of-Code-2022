@@ -15,10 +15,9 @@ public class Part2 {
 			String read = text.nextLine();
 
 			String[] elves = read.split(",");
-			String[] first = elves[0].split("-");
-			String[] second = elves[1].split("-");
-			int[][] values = { { Integer.parseInt(first[0]), Integer.parseInt(first[1]) },
-					{ Integer.parseInt(second[0]), Integer.parseInt(second[1]) } };
+			String[][] valuesS = { elves[0].split("-"), elves[1].split("-") };
+			int[][] values = { { Integer.parseInt(valuesS[0][0]), Integer.parseInt(valuesS[0][1]) },
+					{ Integer.parseInt(valuesS[1][0]), Integer.parseInt(valuesS[1][1]) } };
 			if (values[0][0] > values[1][1] || values[0][1] < values[1][0])
 				continue;
 			sum++;
