@@ -31,7 +31,7 @@ public class Part1 {
 		for (int i = cratesBuff.size() - 1; i >= 0; i--) {
 			char[] split = cratesBuff.get(i);
 			for (int j = 0; j < split.length; j++) {
-				crates.get(j).add(split[j]);
+				if(split[j] != ' ') crates.get(j).add(split[j]);
 			}
 		}
 		
@@ -40,8 +40,11 @@ public class Part1 {
 			String instrRaw = text.nextLine(); 
 			String[] instrPart1 = instrRaw.split(" from "); 
 			String[] instrPart2 = instrPart1[1].split(" to ");
-			int[] inst = {Integer.parseInt(instrPart1[0].substring(5)), Integer.parseInt(instrPart2[0]),Integer.parseInt(instrPart2[1])};
-	
+			int[] inst = {Integer.parseInt(instrPart1[0].substring(5)), Integer.parseInt(instrPart2[0])-1,Integer.parseInt(instrPart2[1])-1};
+			for(int i = inst[0]; i > 0; i--) {
+				crates.get(inst[2]).add(crates.get(inst[1]).getLast());
+				crates.get(inst[1]).removeLast();
+			}
 			
 		}
 
