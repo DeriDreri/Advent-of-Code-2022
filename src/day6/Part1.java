@@ -23,7 +23,6 @@ public class Part1 {
 			i++;
 			boolean contains = false;
 			analyse.add(data.charAt(i));
-			System.out.println(analyse.toString());
 			LinkedList<Character> analyseBuff = (LinkedList<Character>) analyse.clone();
 
 			for (Character j : analyse) {
