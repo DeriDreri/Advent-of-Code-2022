@@ -38,5 +38,9 @@ public class Directory {
 		if (parent == null) return this;
 		return parent;
 	}
-
+	
+	public int getSizeUnder100_000() {
+		if (this.size < 100000) return this.size;
+		return 0;
+	}
 }
