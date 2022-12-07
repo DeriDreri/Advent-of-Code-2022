@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class Directory {
 
 	private LinkedList<String> files;
+	private LinkedList<Directory> dirs;
 	private String name;
 	private Directory parent;
 	private int size; 
@@ -14,6 +15,7 @@ public class Directory {
 		this.name = name;
 		this.parent = parent;
 		this.size = 0;
+		this.dirs = new LinkedList<Directory>();
 	}
 
 	public void addFile(String name, int size) {
@@ -26,7 +28,11 @@ public class Directory {
 	}
 	
 	public int getSize() {
-		return size;
+		int fullSize = 0;
+		for(Directory i : dirs) {
+			fullSize += i.getSize();
+		}
+		return size + fullSize;
 		
 	}
 
@@ -40,7 +46,8 @@ public class Directory {
 	}
 	
 	public int getSizeUnder100_000() {
-		if (this.size < 100000) return this.size;
+		int fullSize = this.getSize();
+		if (fullSize < 100000) return fullSize;
 		return 0;
 	}
 }
