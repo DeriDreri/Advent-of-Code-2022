@@ -20,8 +20,8 @@ public class Part1 {
 
 			switch (command[0]) {
 			case "$":
-				if(command[1] != "cd") break;
-				if(command[2] == "..") {
+				if(command[1].contains("cd") == false) break;
+				if(command[2].contains("..")) {
 					workingDirectory = workingDirectory.getParent();
 					break;
 				}
