@@ -16,6 +16,7 @@ public class Directory {
 		this.parent = parent;
 		this.size = 0;
 		this.dirs = new LinkedList<Directory>();
+		System.out.println("Created dir " + name);
 	}
 
 	public void addFile(String name, int size) {
@@ -25,6 +26,12 @@ public class Directory {
 		}
 		files.add(name);
 		this.size += size;
+		System.out.println("Added file " + name);
+	}
+	
+	public void addDirectory(Directory dir) {
+		if (dirs.contains(dir)) return;
+		dirs.add(dir);
 	}
 	
 	public int getSize() {
