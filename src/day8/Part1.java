@@ -39,37 +39,41 @@ public class Part1 {
 
 	}
 
-	public static boolean analyseTreeVisibility(Integer treeX, Integer treeY, ArrayList<ArrayList<Integer>> treesList, int sizeX, int sizeY) {
+	public static boolean analyseTreeVisibility(Integer treeX, Integer treeY, ArrayList<ArrayList<Integer>> treesList,
+			int sizeX, int sizeY) {
 
 		int treeHigh = treesList.get(treeY).get(treeX).intValue();
 		boolean visibleL = true;
 		boolean visibleR = true;
 		boolean visibleU = true;
 		boolean visibleD = true;
-		
-		for(int i = 0; i < treeX; i++) {
-			if(treesList.get(treeY).get(i).intValue() >= treeHigh) {
+
+		for (int i = 0; i < treeX; i++) {
+			if (treesList.get(treeY).get(i).intValue() >= treeHigh) {
 				visibleL = false;
 				break;
 			}
 		}
-		if(visibleL) return true;
-		for(int i = treeX+1; i < sizeX; i++) {
-			if(treesList.get(treeY).get(i).intValue() >= treeHigh) {
+		if (visibleL)
+			return true;
+		for (int i = treeX + 1; i < sizeX; i++) {
+			if (treesList.get(treeY).get(i).intValue() >= treeHigh) {
 				visibleR = false;
 				break;
 			}
 		}
-		if(visibleR) return true;
-		for(int i = 0; i < treeY; i++) {
-			if(treesList.get(i).get(treeX).intValue() >= treeHigh) {
+		if (visibleR)
+			return true;
+		for (int i = 0; i < treeY; i++) {
+			if (treesList.get(i).get(treeX).intValue() >= treeHigh) {
 				visibleU = false;
 				break;
 			}
 		}
-		if(visibleU) return true;
-		for(int i = treeY+1; i < sizeY; i++) {
-			if(treesList.get(i).get(treeX).intValue() >= treeHigh) {
+		if (visibleU)
+			return true;
+		for (int i = treeY + 1; i < sizeY; i++) {
+			if (treesList.get(i).get(treeX).intValue() >= treeHigh) {
 				visibleD = false;
 				break;
 			}
