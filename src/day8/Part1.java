@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Part1 {
@@ -34,7 +35,7 @@ public class Part1 {
 					numberOfVisibleTrees++;
 		}
 		
-		
+		printTrees(treesToAnalyse);
 		System.out.println(numberOfVisibleTrees);
 
 	}
@@ -43,42 +44,43 @@ public class Part1 {
 			int sizeX, int sizeY) {
 
 		int treeHigh = treesList.get(treeY).get(treeX).intValue();
-		boolean visibleL = true;
-		boolean visibleR = true;
-		boolean visibleU = true;
-		boolean visibleD = true;
+		boolean visible = true;
+	
 
 		for (int i = 0; i < treeX; i++) {
 			if (treesList.get(treeY).get(i).intValue() >= treeHigh) {
-				visibleL = false;
+				visible = false;
 				break;
 			}
 		}
-		if (visibleL)
+		if (visible)
 			return true;
+		visible = true;
 		for (int i = treeX + 1; i < sizeX; i++) {
 			if (treesList.get(treeY).get(i).intValue() >= treeHigh) {
-				visibleR = false;
+				visible = false;
 				break;
 			}
 		}
-		if (visibleR)
+		if (visible)
 			return true;
+		visible = true;
 		for (int i = 0; i < treeY; i++) {
 			if (treesList.get(i).get(treeX).intValue() >= treeHigh) {
-				visibleU = false;
+				visible = false;
 				break;
 			}
 		}
-		if (visibleU)
+		if (visible)
 			return true;
+		visible = true;
 		for (int i = treeY + 1; i < sizeY; i++) {
 			if (treesList.get(i).get(treeX).intValue() >= treeHigh) {
-				visibleD = false;
+				visible = false;
 				break;
 			}
 		}
-		return visibleD;
+		return visible;
 
 	}
 
@@ -90,23 +92,13 @@ public class Part1 {
 		return toReturn;
 	}
 
-	public static void printTrees(ArrayList<ArrayList<Integer>> trees) {
-		for (ArrayList<Integer> row : trees) {
-			for (Integer tree : row) {
-				System.out.print(tree);
-			}
-			System.out.println();
-		}
+	public static <T extends List<E>, E extends List> void printTrees(T list) {
+		list.forEach((i) -> { i.forEach( (j) -> System.out.print(j));
+		System.out.println();
+	});
 	}
-
-	public static void printTrees(LinkedList<LinkedList<Integer>> trees) {
-		for (LinkedList<Integer> row : trees) {
-			for (Integer tree : row) {
-				System.out.print(tree);
-			}
-			System.out.println();
-		}
-	}
+	
+	
 
 	public static LinkedList<Integer> getTreesInRow(String read) {
 		LinkedList<Integer> toReturn = new LinkedList<Integer>();
