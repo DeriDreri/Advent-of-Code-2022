@@ -55,7 +55,7 @@ public class Part2 {
 					uniquePositionsOfTail.add(new Point(newPosition));
 			}
 		}
-		uniquePositionsOfTail.forEach(i -> System.out.println(i));
+		//uniquePositionsOfTail.forEach(i -> System.out.println(i));
 
 	}
 
