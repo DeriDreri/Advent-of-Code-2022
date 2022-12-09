@@ -26,6 +26,8 @@ public class Part1 {
 			sizeY++;
 		}
 
+		text.close();
+
 		int numberOfVisibleTrees = 2 * sizeX + 2 * (sizeY - 2);
 
 		ArrayList<ArrayList<Integer>> treesToAnalyse = LinkedLinkedListToArrayArrayList(trees);
@@ -34,8 +36,7 @@ public class Part1 {
 				if (analyseTreeVisibility(j, i, treesToAnalyse, sizeX, sizeY))
 					numberOfVisibleTrees++;
 		}
-		
-		printTrees(treesToAnalyse);
+
 		System.out.println(numberOfVisibleTrees);
 
 	}
@@ -45,7 +46,6 @@ public class Part1 {
 
 		int treeHigh = treesList.get(treeY).get(treeX).intValue();
 		boolean visible = true;
-	
 
 		for (int i = 0; i < treeX; i++) {
 			if (treesList.get(treeY).get(i).intValue() >= treeHigh) {
@@ -92,13 +92,12 @@ public class Part1 {
 		return toReturn;
 	}
 
-	public static <T extends List<E>, E extends List> void printTrees(T list) {
-		list.forEach((i) -> { i.forEach( (j) -> System.out.print(j));
-		System.out.println();
-	});
+	public static <T extends List<E>, E extends List<?>> void printTrees(T list) {
+		list.forEach((i) -> {
+			i.forEach((j) -> System.out.print(j));
+			System.out.println();
+		});
 	}
-	
-	
 
 	public static LinkedList<Integer> getTreesInRow(String read) {
 		LinkedList<Integer> toReturn = new LinkedList<Integer>();

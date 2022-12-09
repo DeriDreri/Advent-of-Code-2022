@@ -24,7 +24,7 @@ public class Part2 {
 			trees.add(Part1.getTreesInRow(read));
 			sizeY++;
 		}
-
+		text.close();
 		int maximumVisibilityScore = 0;
 
 		ArrayList<ArrayList<Integer>> treesToAnalyse = Part1.LinkedLinkedListToArrayArrayList(trees);
