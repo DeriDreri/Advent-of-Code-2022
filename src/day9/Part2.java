@@ -55,8 +55,7 @@ public class Part2 {
 					uniquePositionsOfTail.add(new Point(newPosition));
 			}
 		}
-		
-		System.out.println(uniquePositionsOfTail.size());
+		uniquePositionsOfTail.forEach(i -> System.out.println(i));
 
 	}
 
@@ -68,11 +67,13 @@ public class Part2 {
 			pointsToMove.get(0).translate(dX, dY);
 			for (int i = 0; i < 9; i++) {
 				if (pointsToMove.get(i).distance(pointsToMove.get(i + 1)) > 1.42) {
-					moveTail(pointsToMove.get(i), pointsToMove.get(i + 1));
+					moveTail(pointsToMove.get(i), pointsToMove.get(i + 1));		
 				} else
 					break;
-				if (i == 8)
-					toReturn.add(pointsToMove.get(9));
+				if (i == 8) {
+					toReturn.add(new Point(pointsToMove.get(9)));
+				}
+				
 			}
 		}
 		
