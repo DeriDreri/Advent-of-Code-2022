@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 public class Monkey {
 
-	
 	private LinkedList<Integer> items;
 	private CalculateWorryLevel worryLevel;
 	private int test;
@@ -14,32 +13,33 @@ public class Monkey {
 	private ArrayList<Monkey> monkeys;
 	private int inspectionsAmount;
 
-	Monkey( LinkedList<Integer> items, CalculateWorryLevel worryLevel, int test, int positiveMonkey, int negativeMonkey, ArrayList<Monkey> monkeys){
+	Monkey(LinkedList<Integer> items, CalculateWorryLevel worryLevel, int test, int positiveMonkey, int negativeMonkey,
+			ArrayList<Monkey> monkeys) {
 		this.worryLevel = worryLevel;
 		this.items = items;
 		this.positiveMonkey = positiveMonkey;
 		this.negativeMonkey = negativeMonkey;
 		this.inspectionsAmount = 0;
 	}
-	
+
 	public int getInspectionsAmount() {
 		return this.inspectionsAmount;
 	}
-	
+
 	public void giveItem(Integer item) {
 		this.items.add(item);
 	}
-	
+
 	public void inspectItems() {
-		for(Integer item : items) {
-			item = worryLevel.calculate();
+		for (Integer item : items) {
+			item = worryLevel.calculate(item);
 			item /= 3;
-			if(item % test == 0) {
+			if (item % test == 0) {
 				this.monkeys.get(positiveMonkey).giveItem(item);
-			}
-			else {
+			} else {
 				this.monkeys.get(negativeMonkey).giveItem(item);
 			}
+			this.inspectionsAmount++;
 		}
 		this.items.clear();
 	}
