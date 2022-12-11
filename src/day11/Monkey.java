@@ -16,10 +16,12 @@ public class Monkey {
 	Monkey(LinkedList<Integer> items, CalculateWorryLevel worryLevel, int test, int positiveMonkey, int negativeMonkey,
 			ArrayList<Monkey> monkeys) {
 		this.worryLevel = worryLevel;
+		this.test = test;
 		this.items = items;
 		this.positiveMonkey = positiveMonkey;
 		this.negativeMonkey = negativeMonkey;
 		this.inspectionsAmount = 0;
+		this.monkeys = monkeys;
 	}
 
 	public int getInspectionsAmount() {

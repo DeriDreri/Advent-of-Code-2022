@@ -16,7 +16,7 @@ public class Part1 {
 
 		while (text.hasNextLine()) {
 			text.nextLine();
-			String[] itemsData = text.nextLine().substring(2).split(" ");
+			String[] itemsData = text.nextLine().substring(2).split(": ")[1].split(", ");
 			var itemsList = new LinkedList<Integer>();
 			for (String item : itemsData) {
 				try {
@@ -58,6 +58,27 @@ public class Part1 {
 
 		}
 		text.close();
+
+		for (int i = 0; i < 20; i++) {
+			for (Monkey monkey : monkeys) {
+				monkey.inspectItems();
+			}
+		}
+
+		int biggestInspectAmount = 0;
+		int secondBiggestInspectAmount = 0;
+		for (Monkey monkey : monkeys) {
+			int monkeyAmount = monkey.getInspectionsAmount();
+			if (monkeyAmount > secondBiggestInspectAmount) {
+				secondBiggestInspectAmount = monkeyAmount;
+				if (monkeyAmount > biggestInspectAmount) {
+					secondBiggestInspectAmount = biggestInspectAmount;
+					biggestInspectAmount = monkeyAmount;
+				}
+			}
+		}
+		System.out.println(biggestInspectAmount * secondBiggestInspectAmount);
+
 	}
 
 }
