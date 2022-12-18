@@ -11,15 +11,15 @@ public class Part2 {
 		File file = new File("inputs\\monkeys.txt");
 		Scanner text = new Scanner(file);
 
-		var monkeys = new ArrayList<Monkey>();
+		var monkeys = new ArrayList<SuperMonkey>();
 
 		while (text.hasNextLine()) {
 			text.nextLine();
 			String[] itemsData = text.nextLine().substring(2).split(": ")[1].split(", ");
-			var itemsList = new LinkedList<Integer>();
+			var itemsList = new LinkedList<Item>();
 			for (String item : itemsData) {
 				try {
-					itemsList.add(Integer.parseInt(item));
+					itemsList.add(new Item(Integer.parseInt(item)));
 				} catch (NumberFormatException e) {
 					;
 				}
@@ -53,21 +53,21 @@ public class Part2 {
 			if (text.hasNextLine())
 				text.nextLine();
 
-			monkeys.add(new Monkey(itemsList, calculate, test, positiveMonkey, negativeMonkey, monkeys));
+			monkeys.add(new SuperMonkey(itemsList, calculate, test, positiveMonkey, negativeMonkey, monkeys));
 
 		}
 		text.close();
 		
-		for (int i = 0; i < 20; i++) {
-			for (Monkey monkey : monkeys) {
+		for (int i = 0; i < 10000; i++) {
+			for (SuperMonkey monkey : monkeys) {
 				monkey.inspectItems();
 			}
 		}
 
-		int biggestInspectAmount = 0;
-		int secondBiggestInspectAmount = 0;
-		for (Monkey monkey : monkeys) {
-			int monkeyAmount = monkey.getInspectionsAmount();
+		long biggestInspectAmount = 0;
+		long secondBiggestInspectAmount = 0;
+		for (SuperMonkey monkey : monkeys) {
+			long monkeyAmount = monkey.getInspectionsAmount();
 			if (monkeyAmount > secondBiggestInspectAmount) {
 				secondBiggestInspectAmount = monkeyAmount;
 				if (monkeyAmount > biggestInspectAmount) {

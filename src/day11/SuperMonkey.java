@@ -3,18 +3,17 @@ package day11;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Monkey {
-
-	private LinkedList<Integer> items;
+public class SuperMonkey {
+	private LinkedList<Item> items;
 	private CalculateWorryLevel worryLevel;
 	private int test;
 	private int positiveMonkey;
 	private int negativeMonkey;
-	private ArrayList<Monkey> monkeys;
-	private int inspectionsAmount;
+	private ArrayList<SuperMonkey> monkeys;
+	private long inspectionsAmount;
 
-	Monkey(LinkedList<Integer> items, CalculateWorryLevel worryLevel, int test, int positiveMonkey, int negativeMonkey,
-			ArrayList<Monkey> monkeys) {
+	SuperMonkey(LinkedList<Item> items, CalculateWorryLevel worryLevel, int test, int positiveMonkey, int negativeMonkey,
+			ArrayList<SuperMonkey> monkeys) {
 		this.worryLevel = worryLevel;
 		this.test = test;
 		this.items = items;
@@ -24,24 +23,24 @@ public class Monkey {
 		this.monkeys = monkeys;
 	}
 
-	public int getInspectionsAmount() {
+	public long getInspectionsAmount() {
 		return this.inspectionsAmount;
 	}
 
-	public void giveItem(Integer item) {
+	public void giveItem(Item item) {
 		this.items.add(item);
 	}
 
 	public void inspectItems() {
-		for (Integer item : items) {
-			item = worryLevel.calculate(item);
-			System.out.println(item);
-			if (item % test == 0) {
+		for (Item item : items) {
+			item.changeValue(worryLevel);
+			//System.out.println(item);
+			if (item.getValue(test) == 0) {
 				this.monkeys.get(positiveMonkey).giveItem(item);
-				System.out.println("Monkey " + test + " throws item to " + positiveMonkey);
+				//System.out.println("Monkey " + test + " throws item to " + positiveMonkey);
 			} else {
 				this.monkeys.get(negativeMonkey).giveItem(item);
-				System.out.println("Monkey " + test + " throws item to " + negativeMonkey);
+				//System.out.println("Monkey " + test + " throws item to " + negativeMonkey);
 			}
 			this.inspectionsAmount++;
 		}
